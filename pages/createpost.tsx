@@ -3,9 +3,9 @@ import { NextPage } from 'next'
 import PostForm from '../Components/PostForm';
 
 const CreatePost: NextPage = () => {
-    return <div>
+    return <div className='w-full flex items-center justify-center px-2'>
         <PostForm />
-    </div>;
+    </div>
 };
 
 export default CreatePost;
