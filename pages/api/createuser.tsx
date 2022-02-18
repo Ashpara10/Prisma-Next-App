@@ -1,5 +1,6 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../lib/prisma";
+import { sign } from "jsonwebtoken";
 
 const handler: NextApiHandler = async (
   req: NextApiRequest,
@@ -16,9 +17,13 @@ const handler: NextApiHandler = async (
       password: password,
     },
   });
+  const data = {
+    user: {
+      id: user.id,
+    },
+  };
+  const authtoken =  sign(data, "Hello LeoMessi23276",{expiresIn:'1h'});
   success = true;
-  res
-    .status(200)
-    .json({ Success: success, Message: "User Created", user: user });
+  res.status(200).json({ Success: success, token: authtoken.toString(), user: user });
 };
 export default handler;

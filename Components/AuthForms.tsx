@@ -9,12 +9,15 @@ export const SignUpForm: React.FC = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  
+
   const HandleSubmit = async (e: any) => {
     e.preventDefault();
     const res = await fetch("/api/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+       
       },
       body: JSON.stringify({
         username: username,
@@ -23,16 +26,17 @@ export const SignUpForm: React.FC = () => {
       }),
     });
     const data = await res.json();
-    if(data.Success){
-       localStorage.setItem("user",data.user.email)
+    if (data.Success) {
+      localStorage.setItem("AuthToken", data.token);
     }
+    console.log(data);
   };
 
   return (
-    <div>
+    // <div>
       <form
         onSubmit={HandleSubmit}
-        className="w-96 mx-2 p-3 border border-gray-300 h-[380px] rounded-lg bg-white flex flex-col items-center justify-center "
+        className=" p-3  w-full border-gray-300 h-full rounded-lg bg-white flex flex-col items-center justify-center "
       >
         <div className="w-full px-3 flex flex-col items-center justify-center ">
           <input
@@ -65,7 +69,7 @@ export const SignUpForm: React.FC = () => {
         <div className="w-full my-2 px-4 flex  items-center justify-center">
           <button
             type="submit"
-            className="p-3 w-full font-bold disabled:bg-indigo-400 rounded-md bg-indigo-700 hover:bg-indigo-500 hover:transition-all text-white text-lg "
+            className="p-3 w-full font-bold disabled:bg-blue-400 rounded-md bg-blue-700 hover:bg-blue-500 hover:transition-all text-white text-lg "
             id="SignupButton"
           >
             Sign up
@@ -78,7 +82,7 @@ export const SignUpForm: React.FC = () => {
           </a>
         </h1>
       </form>
-    </div>
+    // </div>
   );
 };
 export const LoginForm: React.FC = () => {

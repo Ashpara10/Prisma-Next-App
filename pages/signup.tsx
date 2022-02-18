@@ -3,30 +3,14 @@ import { SignUpForm } from "../Components/AuthForms";
 
 const SignUp = () => {
   return (
-    <div className="px-2 flex w-full  items-center justify-center">
-      <SignUpForm />
+    <div className=" flex w-full h-[calc(100vh-65px)]  items-center justify-center ">
+      <div className="border overflow-hidden  border-gray-300 rounded-md  max-w-2xl min-w-[400px] flex items-center justify-center h-[500px]">
+   
+        <SignUpForm />
+      </div>
     </div>
   );
 };
 
 export default SignUp;
 
-// model User {
-//     id        Int      @id @default(autoincrement())
-//     createdAt DateTime @default(now())
-//     email     String   @unique
-//     name      String
-//     password  String
-//     post      Post[]
-//   }
-
-//   model Post {
-//     id        String   @id @default(cuid())
-//     author    User?    @relation(fields: [authorId], references: [id])
-//     authorId  Int?
-//     cover     String
-//     title     String
-//     desc      String
-//     tags      String
-//     createdAt DateTime @default(now())
-//   }

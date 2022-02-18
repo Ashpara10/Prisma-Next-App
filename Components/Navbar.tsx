@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
             <button
               className="p-3 bg-blue-700 rounded-md text-white  font-mono flex items-center justify-center "
               onClick={() => {
-                setProgress(progress + 100), router.push("/createpost");
+                router.push("/createpost");
               }}
             >
               Create Post
@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
               src={`${session?.user?.image}`}
               onClick={() => setOpen(!open)}
             />
-            {open && <DropDown/> }
+            {open && <DropDown />}
           </div>
         ) : (
           <button

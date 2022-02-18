@@ -6,6 +6,9 @@ const handler: NextApiHandler = async (
   res: NextApiResponse
 ) => {
   const feed = await prisma.post.findMany({
+    where:{
+      published:true,
+    },
     include: {
       author: true,
     },
